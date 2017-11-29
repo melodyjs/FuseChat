@@ -12,7 +12,7 @@ namespace Outracks.Simulator
 		public GeneratedApplication()
 			: base(
 				new [] 
-				{new Uno.Net.IPEndPoint(Uno.Net.IPAddress.Parse("127.0.0.1"), 12124), new Uno.Net.IPEndPoint(Uno.Net.IPAddress.Parse("192.168.1.126"), 12124)},"/Users/mac/Desktop/FuseChat/FuseChat.unoproj",new string[] 
+				{new Uno.Net.IPEndPoint(Uno.Net.IPAddress.Parse("127.0.0.1"), 12124), new Uno.Net.IPEndPoint(Uno.Net.IPAddress.Parse("192.168.0.10"), 12124)},"/Users/mac/Desktop/FuseChat/FuseChat.unoproj",new string[] 
 				{ })
 		{
 			Runtime.Bundle.Initialize("FuseChat");
