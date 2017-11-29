@@ -5,12 +5,18 @@
 		<Font File="Assets/Fonts/RobotoCondensed-Regular.ttf" ux:Global="Regular" />
 		<Font File="Assets/Fonts/RobotoCondensed-Light.ttf" ux:Global="Light" />
 
-		<StackPanel Dock="Top" Background="#79f">
+		<StackPanel Dock="Top" Background="#B65B36" Opacity="0.9">
 			<StatusBarBackground />
 			<Fuse.iOS.StatusBarConfig Style="Light" />
 			<Panel>
-				<Image File="Assets/Icons/menu.png" Alignment="CenterLeft" Margin="10" Height="15" Offset="0,2" />
-				<Text Value="Inbox" TextAlignment="Center" Color="#fff" Font="Bold" FontSize="24" Margin="0,10,0,5" />
+				<Image File="Assets/Icons/backButton.png" Alignment="CenterLeft" Margin="10" Height="20" Offset="0,2" />
+				<Text Value="FuseChat" TextAlignment="Center" Color="#fff" Font="Bold" FontSize="24" Margin="0,10,0,5" />
+				<Image File="Assets/Icons/search.png" Alignment="CenterRight" Margin="0,0,40,0" Height="25" Offset="0,2" />
+				<Image File="Assets/Icons/menu.png" Alignment="CenterRight" Margin="10" Height="15" Offset="0,2" />
+				<LinearGradient>
+					<GradientStop Offset="0" Color="#00A2B0" />
+					<GradientStop Offset="1" Color="#00AC94" />
+				</LinearGradient>
 			</Panel>
 		</StackPanel>
 		<BottomBarBackground Dock="Bottom" />
@@ -18,76 +24,43 @@
 			<StackPanel>
 				<Each Items="{messages}">
 					<Panel>
-
-						<SwipeGesture ux:Name="swipeRight" LengthNode="appDock" Direction="Right" Type="Active" />
-						<SwipeGesture ux:Name="swipeLeft" LengthNode="appDock" Direction="Left" Type="Active" />
-
-						<!-- Right swipe events -->
-						<SwipingAnimation Source="swipeRight">
-							<Set postponeText.Opacity="0" />
-							<Set doneText.Opacity="1" />
-							<Set postponeIcon.Opacity="0" />
-							<Set checkmarkIcon.Opacity="1" />
-							<Change background.Color="#050" Easing="ExponentialOut" />
-							<Scale Target="checkmarkIcon" Factor="2.8" Easing="BackOut" />
-						</SwipingAnimation>
-						<Swiped Source="swipeRight">
-							<Callback Handler="{removeItem}" />
-						</Swiped>
-
-						<!-- Left swipe events -->
-						<SwipingAnimation Source="swipeLeft">
-							<Set postponeText.Opacity="1" />
-							<Set doneText.Opacity="0" />
-							<Set checkmarkIcon.Opacity="0" />
-							<Set postponeIcon.Opacity="1" />
-							<Change background.Color="#bb0" Easing="ExponentialOut" />
-							<Scale Target="postponeIcon" Factor="2.8" Easing="BackOut" />
-						</SwipingAnimation>
-						<Swiped Source="swipeLeft">
-							<Callback Handler="{postponeItem}" />
-						</Swiped>
 						<Panel Background="#fff" ux:Name="contents">
-							<SwipingAnimation Source="swipeRight">
-								<Move X="1" RelativeTo="Size"/>
-							</SwipingAnimation>
-							<SwipingAnimation Source="swipeLeft">
-								<Move X="-1" RelativeTo="Size"/>
-							</SwipingAnimation>
 							<DockPanel Margin="7,1,7,0">
-								<Circle Height="50" Width="50" Dock="Left" Margin="7,7,0,7" Alignment="TopLeft">
+								<Circle Height="40" Width="40" Dock="Left" Margin="7,7,0,7" Alignment="TopLeft">
 									<ImageFill File="{icon}" />
+									<Shadow Size="1" />
 								</Circle>
 								<StackPanel Margin="7,3,7,7">
-									<Text Font="Regular" Value="{subject}" FontSize="16" />
-									<Text Font="Regular" Value="{sender}" FontSize="16" Color="#999" />
-									<Text TextWrapping="Wrap" Font="Light" Value="{summary}" FontSize="14" Color="#000" />
+									<Text Font="Regular" Value="{sender}" FontSize="14" Color="#555" />
+									<StackPanel Alignment="CenterLeft" MaxWidth="400" Orientation="Horizontal">
+										<Rectangle CornerRadius="10" MaxWidth="200" Color="#61C2B7">
+											<Text TextWrapping="Wrap" Font="Light" Value="{summary}" FontSize="14" Color="#fff" Margin="10,5,10,5" TextAlignment="Left" />
+											<Shadow Angle="109" Size="0.5" Distance="1" Color="#999" />
+											<LinearGradient AngleDegrees="45">
+												<GradientStop Offset="0" Color="#00A2B1" />
+												<GradientStop Offset="1" Color="#00AC94" />
+											</LinearGradient>
+										</Rectangle>
+										<Text Font="Regular" Value="{time}" FontSize="10" Color="#999" Alignment="BottomLeft" Margin="5,0" />
+									</StackPanel>
 								</StackPanel>
 							</DockPanel>
 						</Panel>
-
-						<Text ux:Class="Operation" Font="Regular" TextAlignment="Center" Alignment="Center"
-							Color="#fff" FontSize="22" />
-						<Operation ux:Name="doneText" >Done</Operation>
-						<Operation ux:Name="postponeText">Postponed</Operation>
-						<Image ux:Class="Icon" Width="20" Height="20" Margin="30" />
-						<Icon ux:Name="checkmarkIcon" Alignment="CenterLeft"
-							File="Assets/Icons/Checkmark.png" />
-						<Icon ux:Name="postponeIcon" Alignment="CenterRight"
-							File="Assets/Icons/Postpone.png" />
-						<Rectangle>
-							<SolidColor ux:Name="background" Color="#fff" />
-						</Rectangle>
-						<RemovingAnimation>
-							<Move RelativeTo="Size" Y="-1" Duration="0.4" Easing="CircularInOut" />
-						</RemovingAnimation>
-
-						<LayoutAnimation>
-							<Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="CircularInOut" />
-						</LayoutAnimation>
 					</Panel>
 				</Each>
 			</StackPanel>
 		</ScrollView>
+		<BottomBarBackground Dock="Top" />
+		<DockPanel Dock="Bottom">
+			<Panel Background="#aaa" ux:Name="writeChat" Alignment="Bottom">
+				<Text Value="+" TextAlignment="Center" Color="#fff" Font="Light" FontSize="24" Alignment="CenterLeft" Margin="10,0" />
+				<Rectangle CornerRadius="10" Margin="30,0,50,0" Height="25" Color="#fff">
+					<TextInput ux:Name="text" PlaceholderText="Message" PlaceholderColor="#999" TextAlignment="Left" Alignment="CenterLeft" Padding="5" FontSize="12" TextWrapping="Wrap" />
+				</Rectangle>
+				<Rectangle Color="#00AB96" CornerRadius="30" Margin="5,0,5,0" Height="25" Width="40" Alignment="CenterRight">
+					<Text Value="Send" Color="#fff" FontSize="12" TextAlignment="Center" Font="Bold" Alignment="Center" />
+				</Rectangle>
+			</Panel>
+		</DockPanel>
 	</DockPanel>
 </App>

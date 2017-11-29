@@ -56,4 +56,4 @@ Polyfills.Window:js/EventTarget.js:eventtarget-c2230a48.js:js/fetch.js:fetch-bb9
 FuseJS
 Outracks.Simulator.Common.Uno
 Fuse.Preview.Core:fight.png:fight-1537455b.png
-FuseChat:Assets/Icons/Checkmark.png:checkmark-c12b7333.png:Assets/Icons/Postpone.png:postpone-25601e70.png:Assets/Fonts/RobotoCondensed-Bold.ttf:robotocondensed-bol-4bb073e7.ttf:Assets/Fonts/RobotoCondensed-Regular.ttf:robotocondensed-reg-c426760e.ttf:Assets/Fonts/RobotoCondensed-Light.ttf:robotocondensed-lig-878a18e2.ttf:MainView.js:mainview-cb8c4a65.js:Assets/Icons/menu.png:menu-91818197.png
+FuseChat:Assets/Fonts/RobotoCondensed-Bold.ttf:robotocondensed-bol-4bb073e7.ttf:Assets/Fonts/RobotoCondensed-Regular.ttf:robotocondensed-reg-c426760e.ttf:Assets/Fonts/RobotoCondensed-Light.ttf:robotocondensed-lig-878a18e2.ttf:MainView.js:mainview-cb8c4a65.js:Assets/Icons/backButton.png:backbutton-101326dd.png:Assets/Icons/menu.png:menu-91818197.png
